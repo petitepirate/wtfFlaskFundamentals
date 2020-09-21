@@ -1,6 +1,8 @@
 from flask import Flask, render_template
-from flask_debugtoolbar import DebugToolbarExtension
+from flask_wtf import FlaskForm
+from wtforms import StringField, FloatField
 from models import Employee, Department, db, connect_db
+from forms import AddSnackForm  # UserForm
 
 app = Flask(__name__)
 
@@ -11,7 +13,7 @@ app.config['SECRET_KEY'] = "abc123"
 
 connect_db(app)
 
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 
 
 @app.route("/phones")
@@ -27,3 +29,9 @@ def phone_list():
 
     emps = Employee.query.all()
     return render_template("phones.html", emps=emps)
+
+
+@app.route('/snacks/new')
+def add_snack():
+    form = AddSnackForm()
+    return render_template("snack_add_form.html", form=form)
