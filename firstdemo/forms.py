@@ -12,10 +12,10 @@ class AddSnackForm(FlaskForm):
     price = FloatField("Price in USD")
 
 
-# class UserForm(FlaskForm):
-#     """Form for adding/editing friend."""
+class UserForm(FlaskForm):
+    """Form for adding/editing friend."""
 
-#     name = StringField("Name",
-#                        validators=[InputRequired()])
-#     email = StringField("Email Address",
-#                         validators=[Optional(), Email()])
+    name = StringField("Name",
+                       validators=[InputRequired()])
+    email = StringField("Email Address",
+                        validators=[Optional(), Email()])
